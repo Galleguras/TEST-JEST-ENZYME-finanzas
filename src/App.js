@@ -1,20 +1,14 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { agregar, eliminar } from "./reducers/finanzas";
-import Form from './components/Form'
-import Dashboard from './components/Dashboard'
-import Finanzas from './components/Finanzas'
-import "./App.css";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { agregar, eliminar } from './reducers/finanzas';
+import Form from './components/Form';
+import Dashboard from './components/Dashboard';
+import Finanzas from './components/Finanzas';
+import './App.css';
 
 function Titulo() {
   return <h2 className="title">Finanzly</h2>;
 }
-
-
-
-
-
-
 
 function App({ finanzas, agregarFinanza, eliminarFinanza }) {
   const total = finanzas.reduce((acc, el) => acc + el.cant, 0);
@@ -30,16 +24,13 @@ function App({ finanzas, agregarFinanza, eliminarFinanza }) {
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return state;
 };
 
-const mapDispatchToProps = dispatch => ({
-  agregarFinanza: finanza => dispatch(agregar(finanza)),
-  eliminarFinanza: index => dispatch(eliminar(index))
+const mapDispatchToProps = (dispatch) => ({
+  agregarFinanza: (finanza) => dispatch(agregar(finanza)),
+  eliminarFinanza: (index) => dispatch(eliminar(index)),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
